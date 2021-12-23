@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include contract_payment *.css
+recursive-include contract_payment *.csv
+recursive-include contract_payment *.html
+recursive-include contract_payment *.ico
+recursive-include contract_payment *.js
+recursive-include contract_payment *.json
+recursive-include contract_payment *.md
+recursive-include contract_payment *.png
+recursive-include contract_payment *.py
+recursive-include contract_payment *.svg
+recursive-include contract_payment *.txt
+recursive-exclude contract_payment *.pyc
