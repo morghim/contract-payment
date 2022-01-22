@@ -117,17 +117,18 @@ class CustomContract(Contract):
         amount = self.get_employee_dues
 
     @frappe.whitelist()
-    def create_sales_invoice(self):
+    def create_sales_invoice(self, today=False):
         contract = frappe.get_doc("Contract Type", self.contract_type)
         item = frappe.get_doc("Item", contract.item)
         income_account = frappe.db.get_value(
             "Company", self.company, ["default_income_account"]
         )
+        due = self.get_unpaid_dues(today=today)
         invoice = frappe.get_doc(
             {
                 "doctype": "Sales Invoice",
                 "customer": self.party_name,
-                "due_date": self.get_unpaid_dues.date_dues,
+                "due_date": due.date_dues,
                 "is_contract_payment_invoice": True,
                 "contract": self.name,
                 "company": self.company,
@@ -140,18 +141,24 @@ class CustomContract(Contract):
                 "item_name": item.item_name,
                 "qty": 1,
                 "conversion_factor": 1,
-                "rate": self.get_unpaid_dues.amount,
+                "rate": due.amount,
                 "description": item.name,
                 "uom": item.stock_uom,
                 "income_account": income_account,
             },
         )
         invoice.insert()
+        submit_after_create = frappe.db.get_single_value(
+            "Contract Payment Settings", "submit_p_invoice"
+        )
+        if submit_after_create:
+            invoice.submit()
+
         link = get_link_to_form("Sales Invoice", invoice.name)
         frappe.msgprint(_("invoice created successfuly {0}".format(link)))
 
     @frappe.whitelist()
-    def create_purchase_invoice(self):
+    def create_purchase_invoice(self, today=False):
         """
         this for make purchaase invoice
         """
@@ -160,11 +167,12 @@ class CustomContract(Contract):
         expense_account = frappe.db.get_value(
             "Company", self.company, ["default_expense_account"]
         )
+        due = self.get_unpaid_dues(today=today)
         invoice = frappe.get_doc(
             {
                 "doctype": "Purchase Invoice",
                 "supplier": self.party_name,
-                "due_date": self.get_unpaid_dues.date_dues,
+                "due_date": due.date_dues,
                 "is_contract_payment_invoice": True,
                 "contract": self.name,
                 "comapny": self.company,
@@ -177,13 +185,19 @@ class CustomContract(Contract):
                 "item_name": item.item_name,
                 "qty": 1,
                 "conversion_factor": 1,
-                "rate": self.get_unpaid_dues.amount,
+                "rate": due.amount,
                 "description": item.name,
                 "uom": item.stock_uom,
                 "expense_account": expense_account,
             },
         )
         invoice.insert()
+        submit_after_create = frappe.db.get_single_value(
+            "Contract Payment Settings", "submit_p_invoice"
+        )
+        if submit_after_create:
+            invoice.submit()
+
         link = get_link_to_form("Purchase Invoice", invoice.name)
         frappe.msgprint(_("purchase invoice created successfuly {0}".format(link)))
 
@@ -239,11 +253,16 @@ class CustomContract(Contract):
             )
             return last_date
 
-    def get_unpaid_dues(self):
+    def get_unpaid_dues(self, today_=False):
         for i in self.contract_dues:
             if not i.is_paid:
+                if today_:
+                    if i.date_dues == today():
+                        return i
+                    return
                 return i
         frappe.msgprint(_("All contract dues is paid"))
+
 
 def update_contract_dues(doctype, doc):
     contract = doc.contract
@@ -254,8 +273,8 @@ def update_contract_dues(doctype, doc):
     for i in contract_dues:
         if paid_amount == 0 or paid_amount < 0:
             break
-        if i['is_partial_paid']:
-            i['amount'] = i['amount'] - i['paid_amount']
+        if i["is_partial_paid"]:
+            i["amount"] = i["amount"] - i["paid_amount"]
         if i["amount"] == paid_amount:
             dues = frappe.get_doc("Contract Dues", i.name)
             dues.is_paid = True
@@ -271,8 +290,8 @@ def update_contract_dues(doctype, doc):
             dues.party_type = doctype
             dues.party_name = doc.name
             dues.paid_amount = paid_amount
-            if i['is_partial_paid']:
-                dues.paid_amount = paid_amount + i['paid_amount']
+            if i["is_partial_paid"]:
+                dues.paid_amount = paid_amount + i["paid_amount"]
             dues.save()
             break
         elif i["amount"] < paid_amount:
@@ -283,5 +302,3 @@ def update_contract_dues(doctype, doc):
             paid_amount = paid_amount - i["amount"]
             dues.paid_amount = i["amount"]
             dues.save()
-
-

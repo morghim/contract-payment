@@ -17,6 +17,11 @@ def create_dues():
         "Contract Dues", filters={"date_dues": today()}, fields=["*"]
     )
     for d in contract_dues:
-        # parent_doc = 
-        pass
+        parent_doc = frappe.get_doc('Contract', d['parent'])
+        if parent_doc.party_type == 'Supplier':
+            parent_doc.create_purchase
+        if parent_doc.party_type == 'Customer':
+            parent_doc.create_purchase
+
+        # pass
 
