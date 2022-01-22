@@ -123,7 +123,7 @@ class CustomContract(Contract):
         income_account = frappe.db.get_value(
             "Company", self.company, ["default_income_account"]
         )
-        due = self.get_unpaid_dues(today=today)
+        due = self.get_unpaid_dues(today_=today)
         invoice = frappe.get_doc(
             {
                 "doctype": "Sales Invoice",
@@ -167,7 +167,7 @@ class CustomContract(Contract):
         expense_account = frappe.db.get_value(
             "Company", self.company, ["default_expense_account"]
         )
-        due = self.get_unpaid_dues(today=today)
+        due = self.get_unpaid_dues(today_=today)
         invoice = frappe.get_doc(
             {
                 "doctype": "Purchase Invoice",
