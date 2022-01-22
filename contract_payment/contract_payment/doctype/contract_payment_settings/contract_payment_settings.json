@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-01-21 19:20:52.824612",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "auto_create_dues",
+  "submit_p_invoice",
+  "stop_create_p_invoice",
+  "stop_create_s_invoice",
+  "stop_salary_slip"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "System will be create dues for contract in the day due",
+   "fieldname": "auto_create_dues",
+   "fieldtype": "Check",
+   "label": "Automatic Create Dues"
+  },
+  {
+   "default": "0",
+   "description": "system will be submit dues after create it",
+   "fieldname": "submit_p_invoice",
+   "fieldtype": "Check",
+   "label": "Submit Dues After Create"
+  },
+  {
+   "default": "0",
+   "description": "if supplier is check as contract payment the system will be stop any purchase invoice for this supplier if contract not select",
+   "fieldname": "stop_create_p_invoice",
+   "fieldtype": "Check",
+   "label": "Stop Create Purchase Invoice For Supplier is contract payment "
+  },
+  {
+   "default": "0",
+   "description": "system will be stop any sales invoice for customer is check as customer contract payment if contract not select",
+   "fieldname": "stop_create_s_invoice",
+   "fieldtype": "Check",
+   "label": "Stop Create Sales Invoice For Customer is Contract payment"
+  },
+  {
+   "default": "0",
+   "description": "system will be stop any salary slip for employee is check as contract payment",
+   "fieldname": "stop_salary_slip",
+   "fieldtype": "Check",
+   "label": "Stop Salary Slip for employee if not select contract"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-01-21 19:21:41.999759",
+ "modified_by": "Administrator",
+ "module": "Contract Payment",
+ "name": "Contract Payment Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

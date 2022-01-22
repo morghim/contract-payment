@@ -1,0 +1,43 @@
+{
+ "category": "Modules",
+ "charts": [],
+ "creation": "2022-01-22 00:58:28.823969",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Contract",
+ "links": [],
+ "modified": "2022-01-22 00:58:28.823969",
+ "modified_by": "Administrator",
+ "module": "Contract Payment",
+ "name": "Contract",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "doc_view": "List",
+   "label": "Contract",
+   "link_to": "Contract",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Contract Type",
+   "link_to": "Contract Type",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "Contract Payment Settings",
+   "link_to": "Contract Payment Settings",
+   "type": "DocType"
+  }
+ ]
+}

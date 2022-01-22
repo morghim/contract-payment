@@ -4,3 +4,4 @@
 *.swp
 tags
 contract_payment/docs/current
+.vscode/settings.json

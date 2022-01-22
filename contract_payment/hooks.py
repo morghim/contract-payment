@@ -9,6 +9,9 @@ app_color = "grey"
 app_email = "morghim@outlook.sa"
 app_license = "MIT"
 
+
+required_apps = ['erpnext']
+
 # Includes in <head>
 # ------------------
 
@@ -31,7 +34,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Contract" : "public/js/contract.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -57,7 +60,7 @@ app_license = "MIT"
 # ------------
 
 # before_install = "contract_payment.install.before_install"
-# after_install = "contract_payment.install.after_install"
+after_install = "contract_payment.install.after_install"
 
 # Desk Notifications
 # ------------------
@@ -81,42 +84,38 @@ app_license = "MIT"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Contract": "contract_payment.contract_payment.override.contract.CustomContract",
+
+}
 
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Contract": {
+		"validate": "contract_payment.contract_payment.override.contract_validate.validate_amount",
+		
+	},
+	# "Purchase Invoice":{
+	# 	"on_update": "contract_payment.contract_payment.override.purchase_invoice.on_update",
+	# },
+	"Payment Entry":{
+		"on_update": "contract_payment.contract_payment.override.payment_entry.on_update",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"contract_payment.tasks.all"
-# 	],
-# 	"daily": [
-# 		"contract_payment.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"contract_payment.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"contract_payment.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"contract_payment.tasks.monthly"
-# 	]
-# }
+scheduler_events = {
+	
+	"daily": [
+		"contract_payment.tasks.create_dues.create_dues"
+	],
+	
+}
 
 # Testing
 # -------
