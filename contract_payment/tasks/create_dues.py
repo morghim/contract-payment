@@ -25,5 +25,4 @@ def create_dues():
         if parent_doc.party_type == 'Customer':
             parent_doc.create_sales_invoice()
 
-        # pass
 

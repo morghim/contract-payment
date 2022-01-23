@@ -16,7 +16,6 @@ frappe.ui.form.on('Contract', {
 	},
 	create_buttons: function(frm){
 		if(!frm.is_new() && frm.doc.contract_payment){
-            console.log("is created button");
 			frm.add_custom_button(__('Calculate Benfites'), function(){
 				frm.events.calculate_benfites(frm);
 			},
