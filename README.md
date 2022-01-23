@@ -1,6 +1,6 @@
 ## Contract Payment
 
-This app for make payment based on contracts
+This app for make payment based on contracts for erpnext
 
 this app link sales, purchase invoice with contract 
 
@@ -17,6 +17,7 @@ to install app
 bench install-app https://github.com/morghim/contract_payment
 
 to use need to check is contract payment on employee, customer, supplier 
+
 
 settings:
 
