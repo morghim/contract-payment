@@ -7,8 +7,6 @@ def on_update(doc, method):
     """
     this method for update Contract Dues to is paid
     """
-    # if not doc.is_contract_payment_invoice:
-    #     return
     if not doc.party_type in ('Supplier', 'Customer'):
         return 
     if not frappe.get_value(doc.party_type, doc.party_name, 'is_contract_payment'):

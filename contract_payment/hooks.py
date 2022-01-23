@@ -98,12 +98,15 @@ doc_events = {
 		"validate": "contract_payment.contract_payment.override.contract_validate.validate_amount",
 		
 	},
-	# "Purchase Invoice":{
-	# 	"on_update": "contract_payment.contract_payment.override.purchase_invoice.on_update",
-	# },
 	"Payment Entry":{
 		"on_update": "contract_payment.contract_payment.override.payment_entry.on_update",
-	}
+	},
+	"Sales Invoice":{
+		"validate": "contract_payment.contract_payment.override.sales_invoice.validate_sales_invoice"
+	},
+	"Purchase Invoice":{
+		"validate": "contract_payment.contract_payment.override.purchase_invoice.validate_purchase_invoice"
+	},
 }
 
 # Scheduled Tasks

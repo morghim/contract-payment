@@ -11,3 +11,6 @@ def validate_amount(doc, method):
         amount = amount + i.amount
     if int(amount) != int(doc.amount):
         frappe.throw(_("Contract Dues total {0} must be equl total amount {1}".format(doc.amount, amount)))
+
+
+
