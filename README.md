@@ -21,10 +21,10 @@
 
 ## settings:
 
-# atuomatic create dues: to make system automatic create purahase invoce and sales invoice on same date of due date
-# submit dues after create: this check for make purchase invoice and sales invoice submitted after create
-# stop create purchase invoice for supplier is contract payement: this check system will be stop any invoice without select contract for supplier
-# stop create sales invoice for customer is contract payment: this check will be stop any invoice for customer without select contract
+##### atuomatic create dues: to make system automatic create purahase invoce and sales invoice on same date of due date
+##### submit dues after create: this check for make purchase invoice and sales invoice submitted after create
+##### stop create purchase invoice for supplier is contract payement: this check system will be stop any invoice without select contract for supplier
+##### stop create sales invoice for customer is contract payment: this check will be stop any invoice for customer without select contract
 
 
 
