@@ -3,19 +3,19 @@
 #### This app for make payment based on contracts for erpnext
 
 #### this app link sales, purchase invoice with contract 
-![alt text](https://github.com/morghim/contract-payment/img/link-pur-invoice.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/link-pur-invoice.gif)
 
 
 #### make contract dues sechudaling or you can add it manualy
-![alt text](https://github.com/morghim/contract-payment/img/calc-dues.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/calc-dues.gif)
 
 
 #### it make sales invoice if party type customer 
 
-![alt text](https://github.com/morghim/contract-payment/img/create-cont-sales-invoice.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/create-cont-sales-invoice.gif)
 
 #### create sales invoice for customer contract
-![alt text](https://github.com/morghim/contract-payment/img/sales-invoice.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/sales-invoice.gif)
 
 
 
@@ -30,13 +30,13 @@
 #### to use need to check is contract payment on employee, customer, supplier 
 
 ##### supplier
-![alt text](https://github.com/morghim/contract-payment/img/supplier.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/supplier.gif)
 
 ##### employee
-![alt text](https://github.com/morghim/contract-payment/img/employee.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/employee.gif)
 
 ##### customer
-![alt text](https://github.com/morghim/contract-payment/img/customer.gif)
+![alt text](https://github.com/morghim/contract-payment/blob/master/img/customer.gif)
 
 
 
