@@ -168,38 +168,39 @@ class CustomContract(Contract):
             "Company", self.company, ["default_expense_account"]
         )
         due = self.get_unpaid_dues(today_=today)
-        invoice = frappe.get_doc(
-            {
-                "doctype": "Purchase Invoice",
-                "supplier": self.party_name,
-                "due_date": due.date_dues,
-                "is_contract_payment_invoice": True,
-                "contract": self.name,
-                "comapny": self.company,
-            }
-        )
-        invoice.append(
-            "items",
-            {
-                "item": item,
-                "item_name": item.item_name,
-                "qty": 1,
-                "conversion_factor": 1,
-                "rate": due.amount,
-                "description": item.name,
-                "uom": item.stock_uom,
-                "expense_account": expense_account,
-            },
-        )
-        invoice.insert()
-        submit_after_create = frappe.db.get_single_value(
-            "Contract Payment Settings", "submit_p_invoice"
-        )
-        if submit_after_create:
-            invoice.submit()
+        if due:
+            invoice = frappe.get_doc(
+                {
+                    "doctype": "Purchase Invoice",
+                    "supplier": self.party_name,
+                    "due_date": due.date_dues,
+                    "is_contract_payment_invoice": True,
+                    "contract": self.name,
+                    "comapny": self.company,
+                }
+            )
+            invoice.append(
+                "items",
+                {
+                    "item": item,
+                    "item_name": item.item_name,
+                    "qty": 1,
+                    "conversion_factor": 1,
+                    "rate": due.amount,
+                    "description": item.name,
+                    "uom": item.stock_uom,
+                    "expense_account": expense_account,
+                },
+            )
+            invoice.insert()
+            submit_after_create = frappe.db.get_single_value(
+                "Contract Payment Settings", "submit_p_invoice"
+            )
+            if submit_after_create:
+                invoice.submit()
 
-        link = get_link_to_form("Purchase Invoice", invoice.name)
-        frappe.msgprint(_("purchase invoice created successfuly {0}".format(link)))
+            link = get_link_to_form("Purchase Invoice", invoice.name)
+            frappe.msgprint(_("purchase invoice created successfuly {0}".format(link)))
 
     def get_employee_dues(self, start_date, end_date):
         salary_slip = frappe.get_doc(

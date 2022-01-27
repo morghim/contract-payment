@@ -3,10 +3,21 @@
 #### This app for make payment based on contracts for erpnext
 
 #### this app link sales, purchase invoice with contract 
+![alt text](https://github.com/morghim/contract-payment/img/link-pur-invoice.gif)
 
-#### this is make contract dues sechudaling 
+
+#### make contract dues sechudaling or you can add it manualy
+![alt text](https://github.com/morghim/contract-payment/img/calc-dues.gif)
+
 
 #### it make sales invoice if party type customer 
+
+![alt text](https://github.com/morghim/contract-payment/img/create-cont-sales-invoice.gif)
+
+#### create sales invoice for customer contract
+![alt text](https://github.com/morghim/contract-payment/img/sales-invoice.gif)
+
+
 
 #### it make purchase invoice if party type supplier
 
@@ -17,6 +28,17 @@
 `bench install-app https://github.com/morghim/contract-payment.git`
 
 #### to use need to check is contract payment on employee, customer, supplier 
+
+##### supplier
+![alt text](https://github.com/morghim/contract-payment/img/supplier.gif)
+
+##### employee
+![alt text](https://github.com/morghim/contract-payment/img/employee.gif)
+
+##### customer
+![alt text](https://github.com/morghim/contract-payment/img/customer.gif)
+
+
 
 
 ## settings:
