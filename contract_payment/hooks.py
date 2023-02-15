@@ -10,7 +10,7 @@ app_email = "morghim@outlook.sa"
 app_license = "MIT"
 
 
-required_apps = ['erpnext']
+required_apps = ['erpnext', 'hrms']
 
 # Includes in <head>
 # ------------------
