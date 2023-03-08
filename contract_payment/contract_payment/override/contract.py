@@ -5,7 +5,7 @@ import datetime
 from dateutil import parser
 import calendar
 
-from erpnext.payroll.doctype.payroll_entry.payroll_entry import (
+from hrms.payroll.doctype.payroll_entry.payroll_entry import (
     create_salary_slips_for_employees,
 )
 
